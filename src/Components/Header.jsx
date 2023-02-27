@@ -1,5 +1,6 @@
 import { Button, Flex, Input, Select, Text, useToast } from "@chakra-ui/react";
 import React from "react";
+import { IMPORTANCE_OPTIONS } from "../data/static";
 import { toastErrorFields } from "../utils/toastError";
 
 const Header = ({ createTask }) => {
@@ -42,9 +43,9 @@ const Header = ({ createTask }) => {
           value={selectValue}
           onChange={(e) => setSelectValue(e.target.value)}
         >
-          <option value="low">Низкая</option>
-          <option value="medium">Средняя</option>
-          <option value="hight">Высокая</option>
+          {IMPORTANCE_OPTIONS.map((option) => (
+            <option value={option.value}>{option.title}</option>
+          ))}
         </Select>
         <Button onClick={checkFields} w={"150px"} colorScheme={"whatsapp"}>
           Добавить
